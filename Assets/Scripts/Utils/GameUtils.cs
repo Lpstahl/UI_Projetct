@@ -6,6 +6,23 @@ using DG.Tweening;
 
 public static class GameUtils
 {
+    //#if UNITY_EDITOR REMOVE O CÓDIGO EDITOR DE UM SCRIPT QUE NÃO É EDITOR PARA NÃO CAUSAR BUG NA COMPILAÇÃO DO JOGO.
+#if UNITY_EDITOR
+    [UnityEditor.MenuItem("Ebac/Test")]
+    public static void Test()
+    {
+        Debug.Log("Teste");
+    }
+
+    //Cria botão de atalho no menu. % = CTRL, # = SHIFT, & = ALT, LEFT/R/UP/D = Arrow Keys, F1, F2... = F Keys, Home, End, PGUP, PGDN 
+    [UnityEditor.MenuItem("Ebac/Test2 %g")]
+    public static void Test2()
+    {
+        Debug.Log("Teste");
+    }
+
+#endif
+
     #region SCALE STUFF
     public static void Scale(this Transform t, float size = 1.2f)
     {
@@ -32,7 +49,7 @@ public static class GameUtils
 
         return array[Random.Range(0, array.Length)];
     }
-
+    
     public static T GetRandom<T>(this List<T> list)
     {
         return list[Random.Range(0, list.Count)];
